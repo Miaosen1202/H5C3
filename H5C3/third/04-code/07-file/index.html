@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>文件读取</title>
+</head>
+<body>
+	<input type="file" class="file" multiple>
+	<!--<select name="" id="">
+		<option value=""></option>
+	</select>-->
+	<img src="" alt="" id="img">
+	<script>
+		/*获取到了文件表单元素*/
+		var file = document.querySelector('.file');
+		/*选择文件后触发*/
+		file.onchange = function () {
+			/*初始化了一个文件读取对象*/
+			var reader = new FileReader();
+			/*读取文件数据  this.files[0] 文件表单元素选择的第一个文件 */
+			reader.readAsDataURL(this.files[0]);
+			/*读取的过程就相当于 加载过程 */
+			/*读取完毕  预览 */
+			reader.onload = function () {
+			    /*读取完毕 base64位数据  表示图片*/
+			    console.log(this.result);
+				document.querySelector('#img').src = this.result;
+
+			}
+		}
+	</script>
+</body>
+</html>

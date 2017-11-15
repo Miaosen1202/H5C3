@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .box {
+            width: 500px;
+            height: 500px;
+            background: pink;
+        }
+    </style>
+</head>
+<body>
+<div class="box">
+    <video width="500" src="video/trailer.mp4"></video>
+</div>
+
+<button class="btn1">全屏</button>
+<button class="btn2">取消全屏</button>
+<script>
+    document.querySelector('.btn1').onclick = function () {
+        /*全屏操作*/
+        /*每一个元素都有全屏方法*/
+        /*H5的api存在兼容问题*/
+        /*在IE9以下不支持  加也没有用*/
+        /*但是在高级浏览器新版本支持，但是需要加上私有前缀*/
+        /*私有前缀：css (-webkit-,-moz-,-ms-,-o-) */
+        /*在js当中也有私有前缀  在方法属性之前加上就可以  首字母大小*/
+        //document.querySelector('video').webkitRequestFullScreen();
+
+        /*页面文档全屏*/
+        //document.querySelector('body').webkitRequestFullScreen();
+        document.documentElement.webkitRequestFullScreen();
+        //document.querySelector('.box').webkitRequestFullScreen();
+    }
+    document.querySelector('.btn2').onclick = function () {
+        /*取消全屏   跟元素没有关系*/
+        document.webkitCancelFullScreen();
+    }
+</script>
+</body>
+</html>

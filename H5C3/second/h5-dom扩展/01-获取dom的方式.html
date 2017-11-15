@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<ul>
+    <li>1</li>
+    <li>2</li>
+    <li>3</li>
+</ul>
+<!--
+H5 api
+1. querySelector()       获取符合选择器的第一个元素
+2. querySelectorAll()    获取符合选择器的所有元素
+-->
+
+<!--<script src="../3d切割轮播图/jquery.min.js"></script>
+<script>
+    console.log($('li:eq(2)').html());
+</script>-->
+<script>
+    /*'Document': 'li:eq(2)' is not a valid selector. 是无效选择器 */
+    /* H5 api有效选择器:在css当中能使用的都是有效选择器*/
+    /* jquery的扩展选择器  :eq :last :first ....  */
+    console.log(document.querySelector('li:last-child').innerHTML);
+</script>
+</body>
+</html>

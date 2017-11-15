@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .box {
+            width: 1000px;
+            height: 500px;
+            border: 1px solid #ccc;
+            background: url("../cart/images/06-bg.png") no-repeat 25% bottom / 1200px 300px;
+            /*1.背景图的百分比不是按照容器的大小去换算的  注意：：：*/
+            /*2.百分比的背景定位：基于  容器的宽度-背景的宽度  */
+            /*3.计算公式  背景的x的定位 = （容器的宽度-背景的宽度 ）* 百分比*/
+        }
+    </style>
+</head>
+<body>
+<div class="box"></div>
+</body>
+</html>

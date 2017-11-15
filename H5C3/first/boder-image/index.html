@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .box{
+            width: 400px;
+            height: 150px;
+            border: 20px solid #ccc;
+            margin-bottom: 30px;
+        }
+
+        .box:first-child{
+            /*border-image: url("images/border01.jpg") 167/20px round;*/
+            /*1.在内容变化的容器可以使用，边框自动填充*/
+            /*2.用法：*/
+            /*2.1 图片资源*/
+            border-image-source: url("images/border01.jpg");
+            /*2.2 切割的尺寸 默认的单位px 而且不能使用小数*/
+            /*2.2.1 切割的位置距离对应的边的距离  切了四刀   4个切割的尺寸*/
+            border-image-slice: 167;/*167 167 167 167*/
+            /*2.3 边框的宽度*/
+            border-image-width: 20px;
+            /*2.4 平铺的方式  三种平铺方式 round stretch repeat*/
+            /*round 环绕 完整的自适应（等比缩放）平铺在边框内*/
+            /*stretch 拉伸 拉伸显示在边框内容 变形的*/
+            /*repeat 平铺 从边框的中间向两侧平铺 自适应平铺但是不是完整的*/
+            border-image-repeat: round;
+
+        }
+        .box:nth-child(2){
+            border-image: url("images/border01.jpg") 167/20px stretch;
+        }
+        .box:last-child{
+            border-image: url("images/border01.jpg") 167/20px repeat;
+        }
+
+
+    </style>
+</head>
+<body>
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+</body>
+</html>

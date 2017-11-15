@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<!--
+在桌面浏览器使用geolocation会遇到网络阻塞问题 （国内政策）
+PositionError {code: 2, message: "Network location provider at 'https://www.googleapis.com/' : No response received."}
+-->
+<script>
+    if(navigator.geolocation){
+        /*getCurrentPosition 获取当前定位信息*/
+        navigator.geolocation.getCurrentPosition(function (position) {
+            /*获取定位信息成功*/
+            /*position 定位信息对象*/
+            /*position 属性 coords 坐标对象*/
+            /*coords 有 经纬度 海拔 ... */
+            /* latitude 维度  longitude 经度 */
+
+        },function(PositionError){
+            /*获取定位信息失败*/
+            /*PositionError 失败信息*/
+        })
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>魔方</title>
+  <style>
+    * {
+      padding: 0;
+      margin: 0;
+      list-style: none;
+    }
+    .box {
+      width: 300px;
+      height: 300px;
+      position: relative;
+      margin: 100px auto;
+      transform-style: preserve-3d;
+      transform: rotateX(-30deg) rotateY(-30deg);
+      animation:run 3s linear infinite alternate;
+    }
+    @-webkit-keyframes run{
+                    from{
+                        transform:rotateX(-180deg) rotateY(-30deg);
+                    }
+                    to{
+                        transform:rotateX(270deg) rotateY(180deg);
+                    }
+                }
+    .box>div{
+            width:100%;
+            height:100%;
+            position:absolute;
+            top:100px;
+            left:100px;
+            opacity:0.5;
+        }
+      .top{
+            transform:rotateX(90deg) translateZ(150px);
+        }
+       .bottom{
+            transform:rotateX(90deg) translateZ(-150px);
+        }
+        .left{
+            transform:rotateY(90deg) translateZ(-150px);
+        }
+         .right{
+            transform:rotateY(90deg) translateZ(150px);
+        }
+        .ago{
+            transform:translateZ(150px);
+        }
+        .back{
+            transform:translateZ(-150px);
+        }
+          li{
+            width:100px;
+            height: 100px;
+            float: left;
+            position:relative;
+            top:0;
+            left:0;
+            border:1px solid #fff;
+            box-sizing:border-box;
+        }
+  </style>
+</head>
+<body>
+   <div class="box">
+      <div class="top"></div>
+      <div class="bottom"></div>
+      <div class="left"></div>
+      <div class="right"></div>
+      <div class="ago"></div>
+      <div class="back"></div>
+    </div>
+</body>
+<script src="jquery.js"></script>
+<script>
+  $(function () {
+    var arr = ['pink',"deeppink","yellow","greenyellow","blue","red"];
+    $(".box>div").each (function (index,item) {
+      var ul = $("<ul></ul>");
+      for (var i = 0; i < 9; i++) {
+        var li = $("<li></li>");
+        li.css("background", arr[index]);
+        ul.append(li);
+      }
+      $(item).append(ul);
+    })
+    var magic = [];
+    for (var i = 0; i < 54; i++) {
+      magic.push(parseInt(Math.random()*720))
+      }
+      $("li").each(function (index,item) {
+        $(item).css({"bottom":magic[index],"left":magic[index]})
+      })
+      $("li").each(function(index,item){
+        $(item).animate({"left":0,"bottom":0},7000)
+      })
+  })
+</script>
+</html>

@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>视频播放</title>
+    <!--字体图标库-->
+    <link rel="stylesheet" href="css/font-awesome.css"/>
+    <link rel="stylesheet" href="css/player.css"/>
+</head>
+<body>
+<figure>
+    <figcaption>视频播放器</figcaption>
+    <div class="player">
+        <video src="./video/fun.mp4"></video>
+        <div class="controls">
+            <!--播放/暂停-->
+            <a href="javascript:;" class="switch fa fa-play"></a>
+            <!--播放进度-->
+            <div class="progress">
+                <div class="line"></div>
+                <div class="bar"></div>
+            </div>
+            <!--当前播放时间/播放总时长-->
+            <div class="timer">
+                <span class="current">00:00:00</span> / <span class="total">00:00:00</span>
+            </div>
+            <!--全屏/取消全屏-->
+            <a href="javascript:;" class="expand fa fa-arrows-alt"></a>
+        </div>
+    </div>
+</figure>
+<script src="./js/jquery.min.js"></script>
+<script>
+    $(function () {
+        /*获取需要操作的dom元素*/
+        /*多媒体相关的api都是dom元素提供的*/
+        var $video = $('video');
+
+        var video = $video.get(0);
+
+        var $total = $('.total');
+
+        var $switch = $('.switch');
+
+        var $line = $('.line');
+
+        var $current = $('.current');
+
+        var $expand = $('.expand');
+
+        var $bar = $('.bar');
+
+        var formatTime = function (time) {
+            /* 01:02:20  格式 */
+            /*time 3666 => 01:01:06 */
+            var h = Math.floor(time / 3600);
+            var m = Math.floor(time % 3600 / 60);
+            var s = Math.floor(time % 60);
+            return (h >= 10 ? h : '0' + h) + ':' + (m >= 10 ? m : '0' + m) + ':' + (s >= 10 ? s : '0' + s);
+        };
+
+
+        /*1.加载效果 总时长显示*/
+        video.oncanplay = function () {
+            $video.show();
+            /*总时长获取 video.duration*/
+            $total.html(formatTime(video.duration));
+        }
+
+        /*2.播放功能 / 暂停功能*/
+        $switch.on('click', function () {
+            /*判断当前的播放状态*/
+            if ($switch.hasClass('fa-play')) {
+                /*播放*/
+                video.play();
+                /*暂停按钮*/
+                $switch.removeClass('fa-play').addClass('fa-pause');
+            } else {
+                /*暂停*/
+                video.pause();
+                /*播放按钮*/
+                $switch.addClass('fa-play').removeClass('fa-pause');
+            }
+        });
+
+        /*3.播放中进度条显示 当前播放时间的显示*/
+        video.ontimeupdate = function () {
+            /* 当前播放时间 console.log(video.currentTime);*/
+            $current.html(formatTime(video.currentTime));
+            /*进度显示  通过长度  百分比*/
+            var ratio = video.currentTime / video.duration;
+            var p = ratio * 100 + '%';
+            $line.css('width', p);
+        };
+
+        /*4.全屏/取消全屏*/
+        $expand.on('click',function () {
+            if($expand.hasClass('fa-arrows-alt')){
+                /*全屏操作*/
+                video.webkitRequestFullScreen();
+                /*改按钮 收起全屏按钮*/
+                $expand.removeClass('fa-arrows-alt').addClass('fa-compress');
+            }else{
+                /*取消全屏*/
+                document.webkitCancelFullScreen();
+                /*改按钮 全屏按钮*/
+                $expand.addClass('fa-arrows-alt').removeClass('fa-compress');
+            }
+        });
+
+        /*5.跃进功能*/
+        $bar.on('click',function (e) {
+            /*获取点击的位置和进度条宽度的比例*/
+            /*通过比例去计算播放时间*/
+            /*把播放时间设置好了 进度也会改变*/
+            var width = $bar.width();
+            /* e.offsetX e.offsetY 当前点击的地方 距离坐标的坐标和上边的坐标  相对于当前元素的 */
+            var place = e.offsetX;
+            /*计算播放时间*/
+            var time = place / width * video.duration;
+            /*设置*/
+            video.currentTime = time;
+            /*触发 播放时间更改事件  */
+            /*必须视频加载完成的时候才能看到效果 */
+            /*遇到跃进没有效果  file形式打开页面 */
+        })
+
+        /*6.播放完毕重置功能*/
+        video.onended = function () {
+            video.currentTime = 0;
+            /*播放按钮*/
+            $switch.addClass('fa-play').removeClass('fa-pause');
+        }
+    })
+</script>
+</body>
+</html>

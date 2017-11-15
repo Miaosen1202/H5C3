@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        ul {
+            list-style: none;
+        }
+
+        li {
+            width: 100px;
+            height: 40px;
+            line-height: 40px;
+            text-align: center;
+            color: #fff;
+            background: green;
+            float: left;
+            cursor: pointer;
+        }
+
+        li.active {
+            background: red;
+        }
+    </style>
+</head>
+<body>
+<ul>
+    <li>菜单1</li>
+    <li class="active">菜单2</li>
+    <li>菜单3</li>
+    <li>菜单4</li>
+</ul>
+<!--<button>切换类</button>-->
+<!--
+1. jquery操作类的方法：addClass() removeClass() toggleClass() hasClass()
+2. h5也有类似的api 基于一个对象classList的方法 add() remove() toggle() contains()
+-->
+<!--<script>
+    var dom = document.querySelector('li:nth-child(2)');
+    /*1.获取类*/
+    console.log(dom.classList);
+    /* DOM.classList  获取的是这个DOM元素上的所有class */
+    /*2.操作类*/
+    dom.classList.add('blue');
+    dom.classList.remove('red');
+
+    document.querySelector('button').onclick = function () {
+        dom.classList.toggle('toggle');
+        console.log(dom.classList.contains('red'));
+    }
+</script>-->
+<script>
+    window.onload = function () {
+        /*切换当前样式的效果*/
+        document.querySelector('ul').onclick = function (e) {
+            /*当前的LI*/
+            var currentLi = e.target;
+            /*如果已经选中 程序停止*/
+            if(currentLi.classList.contains('active')) return false;
+            /*如果没有选中*/
+            /*之前的去除*/
+            document.querySelector('li.active').classList.remove('active');
+            /*在给当前的加上*/
+            currentLi.classList.add('active');
+        }
+    }
+</script>
+</body>
+</html>

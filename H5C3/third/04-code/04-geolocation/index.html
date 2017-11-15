@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>Geolocation</title>
+    <style type="text/css">
+        html,body {
+            height: 100%
+        }
+        body {
+            margin: 0;
+            padding: 0;
+        }
+        #container {
+            height: 100%
+        }
+    </style>
+</head>
+<body>
+<div id="container"></div>
+<!-- 引入百度javascript版 API -->
+<script src="http://api.map.baidu.com/api?v=2.0&ak=	0A5bc3c4fb543c8f9bc54b77bc155724"></script>
+<script>
+
+    /*h5  geolocation */
+    if(navigator.geolocation){
+        navigator.geolocation.getCurrentPosition(function (position) {
+            /*获取定位成功回调函数*/
+            /*定位数据*/
+            console.log(position);
+            var latitude = position.coords.latitude;
+            var longitude = position.coords.longitude;
+
+            // 这些都是写死
+            var map = new BMap.Map("container"); // container表示显示哪个容器
+            // 把经度纬度传给百度
+            /*40.1691162668,116.6348530780*/
+            var point = new BMap.Point(longitude, latitude);
+            //默认的比例
+            map.centerAndZoom(point, 20);
+            //添加鼠标滚动缩放
+            map.enableScrollWheelZoom();
+            // 只写上面三行就可出现地图了，并且会定位
+            // 定义好了一个图片标记
+            var myIcon = new BMap.Icon("1.png", new BMap.Size(128, 128));
+            // 创建标注
+            var marker = new BMap.Marker(point, {icon: myIcon});
+            map.addOverlay(marker);
+            //点击地图，获取经纬度坐标
+            map.addEventListener("click",function(e){
+                console.log("经度坐标："+e.point.lng+" 纬度坐标："+e.point.lat);
+            });
+        }, function (error) {
+            /*获取定位失败回调函数*/
+            /*失败原因*/
+            console.log(error)
+        });
+    }
+
+    // 这些都是写死
+    var map = new BMap.Map("container"); // container表示显示哪个容器
+    // 把经度纬度传给百度
+    /*40.1691162668,116.6348530780*/
+    var point = new BMap.Point(116.6348530780, 40.1691162668);
+    //默认的比例
+    map.centerAndZoom(point, 20);
+    //添加鼠标滚动缩放
+    map.enableScrollWheelZoom();
+    // 只写上面三行就可出现地图了，并且会定位
+    // 定义好了一个图片标记
+    var myIcon = new BMap.Icon("1.png", new BMap.Size(128, 128));
+    // 创建标注
+    var marker = new BMap.Marker(point, {icon: myIcon});
+    map.addOverlay(marker);
+    //点击地图，获取经纬度坐标
+    map.addEventListener("click",function(e){
+        console.log("经度坐标："+e.point.lng+" 纬度坐标："+e.point.lat);
+    });
+
+</script>
+</body>
+</html>

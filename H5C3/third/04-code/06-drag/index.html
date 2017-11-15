@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>拖拽</title>
+	<style>
+		body {
+			padding: 0;
+			margin: 0;
+			background-color: #F7F7F7;
+			position: relative;
+		}
+
+		.box {
+			width: 150px;
+			height: 150px;
+			background-color: yellow;
+			position: absolute;
+			top: 100px;
+			left: 50px;
+		}
+
+		.container {
+			width: 300px;
+			height: 300px;
+			background-color: green;
+			position: absolute;
+			top: 100px;
+			left: 50%;
+			margin-left: -150px;
+		}
+	</style>
+</head>
+<body>
+	<div class="box" draggable="true"></div>
+	<div class="container"></div>
+
+	<script>
+		var box = document.querySelector('.box');
+		var container = document.querySelector('.container');
+
+		// 整个拖拽都会执行
+		box.addEventListener('drag', function (e) {
+			console.log('drag');
+		});
+
+        // 拖拽的点离开当前盒子
+		box.addEventListener('dragleave', function () {
+			console.log('dragleave');
+		});
+
+		// 拖拽开始
+		box.addEventListener('dragstart', function () {
+			this.style.backgroundColor = 'red';
+			console.log('dragstart')
+		});
+
+		// 拖拽结束
+		box.addEventListener('dragend', function (ev) {
+			this.style.backgroundColor = '';
+			console.log('dragend');
+		});
+
+
+		//在目标元素上移动
+		container.addEventListener('dragover', function (e) {
+			this.style.backgroundColor = 'yellow';
+            console.log('目标dragover');
+			e.preventDefault();
+		});
+
+		//在目标元素松开
+		container.addEventListener('drop', function (e) {
+			this.style.backgroundColor = 'black';
+			console.log('目标drop');
+			e.preventDefault();
+		});
+        //在目标元素离开
+        container.addEventListener('dragleave', function (e) {
+            this.style.backgroundColor = '';
+            console.log('目标dragleave');
+            e.preventDefault();
+        });
+	</script>
+</body>
+</html>

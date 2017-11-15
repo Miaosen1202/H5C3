@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<!--
+历史相关api
+history
+history.back()  去上一条历史
+history.forward() 去下一条历史
+history.go() 相对当前  跳多少条记录   正 前走  负 后退
+-->
+<!--
+H5新增一些
+history.pushState();
+history.replaceState();
+window.onpopstate = function(){}
+实现网页中常见的开发模式   单页面应用程序  single page application  SPA
+什么单页面应用程序：在一个页面上实现网站的大部分功能
+实现的方案：1：哈希 hash (路由)  2: 历史追加   特点：改变地址栏是不会跳转的
+-->
+<!--
+ajax渲染
+优点：性能更好，提高用户体验
+缺点：不利于seo,搜索引擎收录的网页源码
+
+解决方案：同时会去更改地址栏 （地址栏在服务端一定有对应的页面）
+-->
+<button class="btn1">追加历史</button>
+<button class="btn2">替换当前历史</button>
+<script>
+    document.querySelector('.btn1').onclick = function () {
+        /*1.存数据  null*/
+        /*2.存标题  null*/
+        /*3.追叫的历史记录的地址*/
+        history.pushState(null,null,'test.html');
+    }
+    document.querySelector('.btn2').onclick = function () {
+        /*1.存数据  null*/
+        /*2.存标题  null*/
+        /*3.替换的历史记录的地址*/
+        history.replaceState(null,null,'test.html');
+    }
+
+    window.onpopstate = function(){
+        /*监听历史切换事件*/
+        /*当前地址 没有包括域名*/
+        console.log(location.pathname);
+    }
+</script>
+</body>
+</html>

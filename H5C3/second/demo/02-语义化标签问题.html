@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        body{
+            margin: 0;
+            padding: 0;
+        }
+        header{
+            height: 100px;
+            background: hotpink;
+        }
+        footer{
+            height: 200px;
+            background: green;
+        }
+    </style>
+    <!--[if lte IE 8]>
+        <script src="html5shiv.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+<!--1.语义化标签的作用-->
+<!--1.1 从开发角度考虑是提高代码的可读性可维护性-->
+<!--1.2 网站的发布者：seo 搜索引擎优化 -->
+
+<!--2.语义化标签的兼容问题-->
+<!--2.1 IE9以下不支持H5标签（大部分css3属性，一些H5的api）-->
+<!--2.2 IE9以下不认识，把这些标签当做行内元素去看待-->
+<!--2.3 语义化标签需要动态创建 document.createElement('header') 同时设置块级元素-->
+<!--2.4 有一款插件能帮你完成这件事件  html5shiv.js   -->
+<!--2.5 必须引入在头部，在页面结构之前，提前解析h5标签-->
+<!--2.6 优化处理：支持H5标签的不需要加载，IE9以下不支持H5加载-->
+<!--2.7 js判断客户的浏览器版本可以做到，但是不能做到js提前加载-->
+<!--2.8 条件注释：网页的任何地方  根据浏览器版本去加载内容（html标签）-->
+<!--2.9 固定语法  lt 小于  gt 大于  lte 小于等于  gte 大于等于 -->
+<header>
+1
+</header>
+<footer>
+2
+</footer>
+<!--[if lt IE 9]>
+    <h1>您的版本浏览器太低，请升级</h1>
+<![endif]-->
+</body>
+</html>
