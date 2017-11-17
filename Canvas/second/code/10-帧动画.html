@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        canvas {
+            border: 1px solid #ccc;
+        }
+    </style>
+</head>
+<body>
+<!--<img src="image/01.jpg" alt="">-->
+<canvas width="600" height="400"></canvas>
+<script>
+    var myCanvas = document.querySelector('canvas');
+    var ctx = myCanvas.getContext('2d');
+
+    var image = new Image();
+    image.onload = function () {
+        /*图片加载完成*/
+        /*动态的去获取当前图片的尺寸*/
+        var imageWidth = image.width;
+        var imageHeight = image.height;
+        /*计算出每一个小人物的尺寸*/
+        var personWidth = imageWidth/4;
+        var personHeight = imageHeight/4;
+        /*位截取图片*/
+        /*帧动画  在固定的时间间隔更换显示的图片  根据图片的索引*/
+        var index = 0;
+
+        /*绘制在画布的中心*/
+        /*图片绘制的起始点*/
+        var x0 = ctx.canvas.width /2 - personWidth / 2;
+        var y0 = ctx.canvas.height /2 - personHeight / 2;
+
+        ctx.drawImage(image,0,0,personWidth,personHeight,x0,y0,personWidth,personHeight);
+        setInterval(function () {
+            index ++;
+            ctx.clearRect(0,0,ctx.canvas.width,ctx.canvas.height);
+            ctx.drawImage(image,index * personWidth,0,personWidth,personHeight,x0,y0,personWidth,personHeight);
+            if(index >= 3){
+                index = 0;
+            }
+        },1000);
+
+    };
+    image.src = 'image/04.png';
+
+
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        canvas {
+            border: 1px solid #ccc;
+        }
+    </style>
+</head>
+<body>
+<canvas width="600" height="400"></canvas>
+<script>
+    var myCanvas = document.querySelector('canvas');
+    var ctx = myCanvas.getContext('2d');
+
+    /*在中心位置画一个半径150px的圆弧右上角 扇形  边  填充 */
+    var w = ctx.canvas.width;
+    var h = ctx.canvas.height;
+
+    /*把起点放到圆心位置*/
+    ctx.moveTo(w/2,h/2);
+
+    ctx.arc(w/2,h/2,150,0,-Math.PI/2,true);
+
+    /*闭合路径*/
+    //ctx.closePath();
+
+    ctx.fill();
+
+
+</script>
+</body>
+</html>

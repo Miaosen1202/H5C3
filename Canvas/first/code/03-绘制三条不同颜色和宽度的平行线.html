@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        canvas {
+            border: 1px solid #ccc;
+        }
+    </style>
+</head>
+<body>
+<canvas width="600" height="400"></canvas>
+<script>
+    var myCanvas = document.querySelector('canvas');
+    var ctx = myCanvas.getContext('2d');
+
+    /*画平行线*/
+    ctx.beginPath();/*Kai*/
+    /*蓝色  10px*/
+    ctx.moveTo(100,100);
+    ctx.lineTo(300,100);
+    ctx.strokeStyle = 'blue';
+    ctx.lineWidth = 10;
+    /*描边*/
+    ctx.stroke();
+
+
+    /*红色 20px*/
+    ctx.moveTo(100,200);
+    ctx.lineTo(300,200);
+    ctx.strokeStyle = 'red';
+    ctx.lineWidth = 20;
+    /*描边*/
+    ctx.stroke();
+
+
+    /*绿色 30px*/
+    ctx.moveTo(100,300);
+    ctx.lineTo(300,300);
+    ctx.strokeStyle = 'green';
+    ctx.lineWidth = 30;
+    /*描边*/
+    ctx.stroke();
+
+
+</script>
+</body>
+</html>

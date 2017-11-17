@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        canvas {
+            border: 1px solid #ccc;
+        }
+    </style>
+</head>
+<body>
+<canvas width="600" height="400"></canvas>
+<script>
+    var myCanvas = document.querySelector('canvas');
+    var ctx = myCanvas.getContext('2d');
+
+    /*画线*/
+    ctx.moveTo(100,100.5);
+    ctx.lineTo(300,100.5);
+    /*[5,10] 数组是用来描述你的排列方式的*/
+    ctx.setLineDash([20]);
+    /*获取虚线的排列方式 获取的是不重复的那一段的排列方式*/
+    console.log(ctx.getLineDash());
+
+    /*如果是正的值 往后偏移*/
+    /*如果是负的值 往前偏移*/
+    ctx.lineDashOffset = -20;
+
+    ctx.stroke();
+
+</script>
+</body>
+</html>

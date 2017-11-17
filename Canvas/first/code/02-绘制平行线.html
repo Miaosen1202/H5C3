@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        canvas {
+            border: 1px solid #ccc;
+        }
+    </style>
+</head>
+<body>
+<canvas width="600" height="400"></canvas>
+<script>
+    var myCanvas = document.querySelector('canvas');
+    var ctx = myCanvas.getContext('2d');
+
+    /*画平行线*/
+    ctx.moveTo(100,100.5);
+    ctx.lineTo(300,100.5);
+
+    ctx.moveTo(100,200);
+    ctx.lineTo(300,200);
+
+    /*描边*/
+    ctx.stroke();
+
+
+    /*关于线条的问题*/
+    /*1.默认的宽度是多少   1px*/
+    /*2.默认的颜色是什么   黑色*/
+    /*产生原因  对齐的点是线的中心位置  会把线分成两个0.5px 显示的是会不饱和增加宽度*/
+    /*解决方案  前后移动0.5px */
+
+</script>
+</body>
+</html>

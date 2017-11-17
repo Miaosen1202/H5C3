@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        canvas {
+            border: 1px solid #ccc;
+        }
+/*        .linearGradient{
+            width: 400px;
+            height: 100px;
+            background-image: linear-gradient(to right,pink,blue);
+        }*/
+    </style>
+</head>
+<body>
+<div class="linearGradient"></div>
+<canvas width="600" height="400"></canvas>
+<script>
+    var myCanvas = document.querySelector('canvas');
+    var ctx = myCanvas.getContext('2d');
+
+    /*fillStyle 'pink' '#000' 'rgb()' 'rgba()' */
+    /*也可以使用一个渐变的方案了填充矩形*/
+    /*创建一个渐变的方案*/
+    /*渐变是由长度的*/
+    /*x0y0 起始点 x1y1 结束点  确定长度和方向*/
+    var linearGradient = ctx.createLinearGradient(100,100,500,400);
+    linearGradient.addColorStop(0,'pink');
+    //linearGradient.addColorStop(0.5,'red');
+    linearGradient.addColorStop(1,'blue');
+
+    ctx.fillStyle = linearGradient;
+
+    ctx.fillRect(100,100,400,100);
+
+    /*pink---->blue*/
+    /*回想线性渐变---->要素 方向  起始颜色 结束颜色 */
+    /*通过两个点的坐标可以控制 渐变方向*/
+
+
+</script>
+</body>
+</html>

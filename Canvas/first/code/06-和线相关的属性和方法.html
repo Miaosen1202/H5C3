@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        canvas {
+            border: 1px solid #ccc;
+        }
+    </style>
+</head>
+<body>
+<canvas width="600" height="400"></canvas>
+<script>
+    var myCanvas = document.querySelector('canvas');
+    var ctx = myCanvas.getContext('2d');
+
+    /*画平行线*/
+    ctx.beginPath();
+    ctx.moveTo(100,100);
+    ctx.lineTo(200,20);
+    ctx.lineTo(300,100);
+    ctx.strokeStyle = 'blue';
+    ctx.lineWidth = 10;
+    ctx.lineCap = 'butt';
+    ctx.lineJoin = 'miter';
+    ctx.stroke();
+
+    ctx.beginPath();
+    ctx.moveTo(100,200);
+    ctx.lineTo(200,120);
+    ctx.lineTo(300,200);
+    ctx.strokeStyle = 'red';
+    ctx.lineWidth = 20;
+    ctx.lineCap = 'square';
+    ctx.lineJoin = 'bevel';
+    ctx.stroke();
+
+
+    ctx.beginPath();
+    ctx.moveTo(100,300);
+    ctx.lineTo(200,220);
+    ctx.lineTo(300,300);
+    ctx.strokeStyle = 'green';
+    ctx.lineWidth = 30;
+    ctx.lineCap = 'round';
+    ctx.lineJoin = 'round';
+    ctx.stroke();
+
+
+</script>
+</body>
+</html>

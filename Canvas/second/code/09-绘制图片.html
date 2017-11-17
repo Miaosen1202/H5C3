@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        canvas {
+            border: 1px solid #ccc;
+        }
+    </style>
+</head>
+<body>
+<!--<img src="image/01.jpg" alt="">-->
+<canvas width="600" height="400"></canvas>
+<script>
+    var myCanvas = document.querySelector('canvas');
+    var ctx = myCanvas.getContext('2d');
+
+    /*1.加载图片到内存即可*/
+    /*var img = document.createElement('img');
+    img.src = 'image/01.jpg';*/
+    /*创建对象*/
+    var image = new Image();
+    /*绑定加载完成事件*/
+    image.onload = function () {
+        /*实现图片绘制*/
+        console.log(image);
+        /*绘制图片的三种方式*/
+
+        /*3参数*/
+        /*图片对象*/
+        /*绘制在画布上的坐标 x y*/
+        //ctx.drawImage(image,100,100);
+
+
+        /*5个参数*/
+        /*图片对象*/
+        /*绘制在画布上的坐标 x y*/
+        /*是图片的大小  不是裁剪  是缩放*/
+        //ctx.drawImage(image,100,100,100,100);
+
+
+        /*9个参数*/
+        /*图片对象*/
+        /*图片上定位的坐标  x y */
+        /*在图片上截取多大的区域  w h*/
+        /*绘制在画布上的坐标 x y*/
+        /*是图片的大小  不是裁剪  是缩放*/
+        ctx.drawImage(image,400,400,400,400,200,200,100,100);
+
+    };
+    /*设置图片路径*/
+    image.src = 'image/02.jpg';
+
+
+
+    
+</script>
+</body>
+</html>

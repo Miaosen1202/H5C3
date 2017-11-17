@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        canvas {
+            border: 1px solid #ccc;
+        }
+    </style>
+</head>
+<body>
+<canvas width="600" height="400"></canvas>
+<script>
+    var myCanvas = document.querySelector('canvas');
+    var ctx = myCanvas.getContext('2d');
+
+    /*1.体验曲线的绘制*/
+    /*2.线是由点构成的*/
+    /*3.曲线可以由数学公式得来*/
+
+    /*公式：y = x/2 */
+    /*公式：y = (x + 2) ^2  */
+    /*公式：y = sin(x) */
+
+    for(var i = 1 ; i < 600 ; i ++){
+        var x = i;
+        //var y = x/2;
+        //var y = Math.pow(x/10-30,2);
+        var y = 50*Math.sin(x/10) + 100;
+        ctx.lineTo(x,y);
+    }
+    ctx.stroke();
+
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        canvas{
+            border: 1px solid #ccc;
+            /*不建议在 样式设置尺寸*/
+            /*width: 600px;
+            height: 400px;*/
+        }
+    </style>
+</head>
+<body>
+<!--1.准备画布-->
+<!--1.1 画布是白色的 而且默认300*150-->
+<!--1.2 设置画布的大小  width="600" height="400" -->
+<canvas width="600" height="400" ></canvas>
+<!--2.准备绘制工具-->
+<!--3.利用工具绘图-->
+<script>
+    /*1.获取元素*/
+    var myCanvas = document.querySelector('canvas');
+    /*2.获取上下文 绘制工具箱 */
+    /*是否有3d 暂时没有*/
+    var ctx = myCanvas.getContext('2d'); /*web gl 绘制3d效果的网页技术*/
+    /*3.移动画笔*/
+    ctx.moveTo(100,100);
+    /*4.绘制直线 (轨迹，绘制路径)*/
+    ctx.lineTo(200,100);
+    /*5.描边*/
+    ctx.stroke();
+</script>
+</body>
+</html>

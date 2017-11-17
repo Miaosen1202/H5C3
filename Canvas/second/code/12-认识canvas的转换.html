@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        canvas {
+            border: 1px solid #ccc;
+        }
+    </style>
+</head>
+<body>
+<canvas width="600" height="400"></canvas>
+<script>
+    var myCanvas = document.querySelector('canvas');
+    var ctx = myCanvas.getContext('2d');
+    //ctx.translate(100,100);
+    //ctx.scale(0.5,1);
+    //ctx.rotate(Math.PI/6);
+    var startAngle = 0;
+    ctx.translate(150,150);
+    setInterval(function () {
+        startAngle += Math.PI/180;
+        ctx.rotate(startAngle);
+        ctx.strokeRect(-50,-50,100,100);
+    },500);
+
+
+
+</script>
+</body>
+</html>
